@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "yEupwymENBbFjeuTqlG3ByRNEq8pzcV7cyaEwAfLl4Cn2RuLIdTWHMpED4rmdQeJ2GcXRImhjB6AiRFQ84y8pg==",
+  "dgSpecHash": "91PP1CX/Bq7CP7a6elpilTEekJQ3ImK0PCEHjx9ZTq7z63iyNbaZsJAVdjgzhvYDWVoGFxlO3a9+dXhhpzee6Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\SmallerCompressedListCSV.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\ottoa\\.nuget\\packages\\csvhelper\\31.0.0\\csvhelper.31.0.0.nupkg.sha512",
+    "C:\\Users\\ottoa\\.nuget\\packages\\system.linq.async\\4.0.0\\system.linq.async.4.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
