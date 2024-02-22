@@ -9,7 +9,6 @@ using System.Linq;
 
 namespace SmallerCompressedListCSV
 {
-
     class Program
     {
         static void Main(string[] args)
@@ -51,7 +50,7 @@ namespace SmallerCompressedListCSV
         {
             try
             {
-                string baseDirectory = @"C:\Users\ottoa\OneDrive\Skrivbord\SmallerCompressedListCSV\SmallerCompressedListCSV\SmallerCompressedListCSV\bin\Debug\net8.0";
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string firstCsvFilePath = Path.Combine(baseDirectory, "indexlist.csv");
                 string secondCsvFilePath = Path.Combine(baseDirectory, "inputlist.csv");
                 string combinedCsvFilePath = Path.Combine(baseDirectory, "even-smaller-combined-List.csv");
@@ -136,26 +135,11 @@ namespace SmallerCompressedListCSV
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         static void MergeCsvFiles()
         {
             try
             {
-                string baseDirectory = @"C:\Users\ottoa\OneDrive\Skrivbord\SmallerCompressedListCSV\SmallerCompressedListCSV\SmallerCompressedListCSV\bin\Debug\net8.0";
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 string firstCsvFilePath = Path.Combine(baseDirectory, "indexlist.csv");
                 string secondCsvFilePath = Path.Combine(baseDirectory, "inputlist.csv");
                 string combinedCsvFilePath = Path.Combine(baseDirectory, "smaller-combined-List.csv");
