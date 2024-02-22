@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 
 public class FirstIndexCsvRecord
 {
-    [Name("AdsVariableName")]
+    [Name("IdIndex")]
+    public int? IdIndex { get; set; }
+    [Name(" AdsVariableName")]
     public string? AdsVariableName { get; set; }
 
     [Name(" ModbusAddress")]
@@ -27,7 +29,9 @@ public class FirstIndexCsvRecord
 
 public class SecondInputCsvRecord
 {
-    [Name("AdsVariableName")]
+    [Name("IdIndex")]
+    public int? IdIndex { get; set; }
+    [Name(" AdsVariableName")]
     public string? AdsVariableName { get; set; }
 
     [Name(" Type")]

@@ -11,19 +11,21 @@ public class CombinedCsvRecord
 {
     //remember it's not index, but regular order placement of this that determine the list order outcome.
     [Index(0)]
-    public string? AdsVariableName { get; set; }
+    public int? IdIndex { get; set; }
     [Index(1)]
-    public bool? AddUnit { get; set; }
+    public string? AdsVariableName { get; set; }
     [Index(2)]
-    public string? ModbusPermission { get; set; }
+    public bool? AddUnit { get; set; }
     [Index(3)]
-    public string? Type { get; set; }
+    public string? ModbusPermission { get; set; }
     [Index(4)]
-    public string? Description { get; set; }
+    public string? Type { get; set; }
     [Index(5)]
-    public int? ModbusAddress { get; set; }
+    public string? Description { get; set; }
     [Index(6)]
-    public bool? InterpolatePoints { get; set; }
+    public int? ModbusAddress { get; set; }
     [Index(7)]
+    public bool? InterpolatePoints { get; set; }
+    [Index(8)]
     public string? ADSDataType { get; set; }
 }

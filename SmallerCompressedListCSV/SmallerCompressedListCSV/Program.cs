@@ -79,6 +79,7 @@ class Program
             {
                 var combinedRecord = new CombinedCsvRecord
                 {
+                    IdIndex = firstRecord.IdIndex,
                     AdsVariableName = firstRecord.AdsVariableName,
                     ModbusAddress = firstRecord.ModbusAddress,
                     ADSDataType = firstRecord.ADSDataType
@@ -89,7 +90,7 @@ class Program
             // Merge records from second CSV file
             foreach (var secondRecord in secondCsvRecords)
             {
-                var existingRecord = combinedRecords.FirstOrDefault(x => x.AdsVariableName == secondRecord.AdsVariableName);
+                var existingRecord = combinedRecords.FirstOrDefault(x => x.IdIndex == secondRecord.IdIndex && x.AdsVariableName == secondRecord.AdsVariableName);
                 if (existingRecord != null)
                 {
                     existingRecord.Type = secondRecord.Type;
@@ -99,6 +100,7 @@ class Program
                 {
                     var combinedRecord = new CombinedCsvRecord
                     {
+                        IdIndex = secondRecord.IdIndex,
                         AdsVariableName = secondRecord.AdsVariableName,
                         Type = secondRecord.Type,
                         ADSDataType = secondRecord.ADSDataType,
@@ -128,12 +130,21 @@ class Program
     {
         public CombinedCsvRecordMap()
         {
+            Map(m => m.IdIndex);
             Map(m => m.AdsVariableName);
             Map(m => m.ModbusAddress);
             Map(m => m.Type);
             Map(m => m.ADSDataType);
         }
     }
+
+
+
+
+
+
+
+
 
     static void MergeWholeCsvFiles()
     {
@@ -167,13 +178,14 @@ class Program
             foreach (var firstRecord in firstCsvRecords)
             {
                 // Check if the record already exists 
-                var existingRecord = combinedRecords.FirstOrDefault(x => x.AdsVariableName == firstRecord.AdsVariableName);
+                var existingRecord = combinedRecords.FirstOrDefault(x => x.IdIndex == firstRecord.IdIndex && x.AdsVariableName == firstRecord.AdsVariableName);
 
                 if (existingRecord == null)
                 {
                     // If not, create new
                     var combinedRecord = new CombinedCsvRecord
                     {
+                        IdIndex = firstRecord.IdIndex,
                         AdsVariableName = firstRecord.AdsVariableName,
                         ModbusAddress = firstRecord.ModbusAddress,
                         ModbusPermission = firstRecord.ModbusPermission,
@@ -200,6 +212,7 @@ class Program
                 {
                     var combinedRecord = new CombinedCsvRecord
                     {
+                        IdIndex = firstRecord.IdIndex,
                         AdsVariableName = firstRecord.AdsVariableName,
                         ModbusAddress = firstRecord.ModbusAddress,
                         ModbusPermission = firstRecord.ModbusPermission,
@@ -214,13 +227,14 @@ class Program
             foreach (var secondRecord in secondCsvRecords)
             {
                 // Check if the record already exists 
-                var existingRecord = combinedRecords.FirstOrDefault(x => x.AdsVariableName == secondRecord.AdsVariableName);
+                var existingRecord = combinedRecords.FirstOrDefault(x => x.IdIndex == secondRecord.IdIndex && x.AdsVariableName == secondRecord.AdsVariableName);
 
                 if (existingRecord == null)
                 {
                     // If not, create new
                     var combinedRecord = new CombinedCsvRecord
                     {
+                        IdIndex = secondRecord.IdIndex,
                         AdsVariableName = secondRecord.AdsVariableName,
                         Type = secondRecord.Type,
                         Description = secondRecord.Description,
@@ -248,6 +262,7 @@ class Program
                 {
                     var combinedRecord = new CombinedCsvRecord
                     {
+                        IdIndex = secondRecord.IdIndex,
                         AdsVariableName = secondRecord.AdsVariableName,
                         Type = secondRecord.Type,
                         Description = secondRecord.Description,
