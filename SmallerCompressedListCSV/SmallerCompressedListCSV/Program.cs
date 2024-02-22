@@ -63,11 +63,11 @@ class Program
 
         while (true)
         {
-            Console.WriteLine("\nMainmenu options:");
-            Console.WriteLine("\nSelect an option: ");
+            Console.WriteLine("\nMainmenu");
+            Console.WriteLine("Select an option: ");
             Console.WriteLine("\n1. Merge CSV files");
-            Console.WriteLine("2. Merge only ' ' records to new CSV file");
-            Console.WriteLine("0. Exit");
+            Console.WriteLine($"2. Merge only some records to new CSV file");
+            Console.WriteLine("0. Exit\n");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -75,12 +75,12 @@ class Program
                 case "1":
                     Console.WriteLine("\nCreating a new CSV list from merging...");
                     MergeCsvFiles();
-                    Console.WriteLine("\nReturning to the mainmenu!");
+                    Console.WriteLine("Returning to the mainmenu!");
                     break;
                 case "2":
                     Console.WriteLine("\nCreating a even smaller CSV list...");
                     MergeSmallerCsvFile();
-                    Console.WriteLine("\nReturning to the mainmenu!");
+                    Console.WriteLine("Returning to the mainmenu!");
                     break;
                 case "0":
                     Console.WriteLine("\nExiting CSV File Merger...");
@@ -145,7 +145,6 @@ class Program
                 {
                     AdsVariableName = secondRecord.AdsVariableName,
                     Type = secondRecord.Type,
-                    ADSDataType = secondRecord.ADSDataType
                 };
                 combinedRecords.Add(combinedRecord);
             }

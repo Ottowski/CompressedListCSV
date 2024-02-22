@@ -11,9 +11,9 @@ C:\Users\ottoa\OneDrive\Skrivbord\SmallerCompressedListCSV\SmallerCompressedList
 C:\Users\ottoa\OneDrive\Skrivbord\SmallerCompressedListCSV\SmallerCompressedListCSV\SmallerCompressedListCSV\obj\Debug\net8.0\SmallerCompressedListCSV.AssemblyInfo.cs
 C:\Users\ottoa\OneDrive\Skrivbord\SmallerCompressedListCSV\SmallerCompressedListCSV\SmallerCompressedListCSV\obj\Debug\net8.0\SmallerCompressedListCSV.csproj.CoreCompileInputs.cache
 C:\Users\ottoa\OneDrive\Skrivbord\SmallerCompressedListCSV\SmallerCompressedListCSV\SmallerCompressedListCSV\obj\Debug\net8.0\SmallerCompressedListCSV.sourcelink.json
-C:\Users\ottoa\OneDrive\Skrivbord\SmallerCompressedListCSV\SmallerCompressedListCSV\SmallerCompressedListCSV\obj\Debug\net8.0\SmallerCompressedListCSV.csproj.CopyComplete
 C:\Users\ottoa\OneDrive\Skrivbord\SmallerCompressedListCSV\SmallerCompressedListCSV\SmallerCompressedListCSV\obj\Debug\net8.0\SmallerCompressedListCSV.dll
 C:\Users\ottoa\OneDrive\Skrivbord\SmallerCompressedListCSV\SmallerCompressedListCSV\SmallerCompressedListCSV\obj\Debug\net8.0\refint\SmallerCompressedListCSV.dll
 C:\Users\ottoa\OneDrive\Skrivbord\SmallerCompressedListCSV\SmallerCompressedListCSV\SmallerCompressedListCSV\obj\Debug\net8.0\SmallerCompressedListCSV.pdb
 C:\Users\ottoa\OneDrive\Skrivbord\SmallerCompressedListCSV\SmallerCompressedListCSV\SmallerCompressedListCSV\obj\Debug\net8.0\SmallerCompressedListCSV.genruntimeconfig.cache
 C:\Users\ottoa\OneDrive\Skrivbord\SmallerCompressedListCSV\SmallerCompressedListCSV\SmallerCompressedListCSV\obj\Debug\net8.0\ref\SmallerCompressedListCSV.dll
+C:\Users\ottoa\OneDrive\Skrivbord\SmallerCompressedListCSV\SmallerCompressedListCSV\SmallerCompressedListCSV\obj\Debug\net8.0\SmallerC.A78F4650.Up2Date
