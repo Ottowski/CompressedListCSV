@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using CsvHelper.Configuration;
 using CsvHelper.Configuration.Attributes;
 using System.Globalization;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -65,7 +66,8 @@ class Program
             Console.WriteLine("\nMainmenu options:");
             Console.WriteLine("\nSelect an option: ");
             Console.WriteLine("\n1. Merge CSV files");
-            Console.WriteLine("2. Exit");
+            Console.WriteLine("2. Merge only ' ' records to new CSV file");
+            Console.WriteLine("0. Exit");
             string choice = Console.ReadLine();
 
             switch (choice)
@@ -76,6 +78,11 @@ class Program
                     Console.WriteLine("\nReturning to the mainmenu!");
                     break;
                 case "2":
+                    Console.WriteLine("\nCreating a even smaller CSV list...");
+                    MergeSmallerCsvFile();
+                    Console.WriteLine("\nReturning to the mainmenu!");
+                    break;
+                case "0":
                     Console.WriteLine("\nExiting CSV File Merger...");
                     return;
                 default:
@@ -84,6 +91,91 @@ class Program
             }
         }
     }
+
+
+
+    static void MergeSmallerCsvFile()
+    {
+        string baseDirectory = @"C:\Users\ottoa\OneDrive\Skrivbord\SmallerCompressedListCSV\SmallerCompressedListCSV\SmallerCompressedListCSV\bin\Debug\net8.0";
+        string firstCsvFilePath = Path.Combine(baseDirectory, "indexlist.csv");
+        string secondCsvFilePath = Path.Combine(baseDirectory, "inputlist.csv");
+        string combinedCsvFilePath = Path.Combine(baseDirectory, "even-smaller-combined-List.csv");
+
+        // Read both CSV files
+        List<FirstIndexCsvRecord> firstCsvRecords;
+        List<SecondInputCsvRecord> secondCsvRecords;
+
+        using (var reader = new StreamReader(firstCsvFilePath))
+        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+        {
+            firstCsvRecords = csv.GetRecords<FirstIndexCsvRecord>().ToList();
+        }
+
+        using (var reader = new StreamReader(secondCsvFilePath))
+        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+        {
+            secondCsvRecords = csv.GetRecords<SecondInputCsvRecord>().ToList();
+        }
+
+        // Merge records from first CSV file
+        var combinedRecords = new List<CombinedCsvRecord>();
+
+        foreach (var firstRecord in firstCsvRecords)
+        {
+            var combinedRecord = new CombinedCsvRecord
+            {
+                AdsVariableName = firstRecord.AdsVariableName,
+                ModbusAddress = firstRecord.ModbusAddress,
+                ADSDataType = firstRecord.ADSDataType
+            };
+            combinedRecords.Add(combinedRecord);
+        }
+
+        // Merge records from second CSV file
+        foreach (var secondRecord in secondCsvRecords)
+        {
+            var existingRecord = combinedRecords.FirstOrDefault(x => x.AdsVariableName == secondRecord.AdsVariableName);
+            if (existingRecord != null)
+            {
+                existingRecord.Type = secondRecord.Type;
+            }
+            else
+            {
+                var combinedRecord = new CombinedCsvRecord
+                {
+                    AdsVariableName = secondRecord.AdsVariableName,
+                    Type = secondRecord.Type,
+                    ADSDataType = secondRecord.ADSDataType
+                };
+                combinedRecords.Add(combinedRecord);
+            }
+        }
+
+        // Write the combined new CSV file
+        using (var writer = new StreamWriter(combinedCsvFilePath))
+        using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+        {
+            // Create ClassMap to ignore unwanted properties
+            csv.Context.RegisterClassMap<CombinedCsvRecordMap>();
+            csv.WriteRecords(combinedRecords);
+        }
+
+        Console.WriteLine("\nCombined merging of CSV files was created successfully.");
+    }
+
+    // ClassMap to configure CsvHelper to ignore unwanted properties
+    public class CombinedCsvRecordMap : ClassMap<CombinedCsvRecord>
+    {
+        public CombinedCsvRecordMap()
+        {
+            Map(m => m.AdsVariableName);
+            Map(m => m.ModbusAddress);
+            Map(m => m.Type);
+            Map(m => m.ADSDataType);
+        }
+    }
+
+
 
     static void MergeCsvFiles()
     {
@@ -216,4 +308,5 @@ class Program
 
         Console.WriteLine("\nCombined merging of CSV files was created successfully.");
     }
+
 }
