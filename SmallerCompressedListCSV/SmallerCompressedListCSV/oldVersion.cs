@@ -1,57 +1,42 @@
-﻿using CsvHelper;
+﻿/*using CsvHelper;
 using CsvHelper.Configuration.Attributes;
 using System.Globalization;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
-public class FirstIndexCsvRecord
+public class FirstCsvRecord
 {
     [Name("AdsVariableName")]
-    public string? AdsVariableName { get; set; }
+    public string AdsVariableName { get; set; }
 
     [Name(" ModbusAddress")]
     public int? ModbusAddress { get; set; }
 
     [Name(" ModbusPermission")]
-    public string? ModbusPermission { get; set; }
-
-    [Name("AddUnit")] 
-    public bool? AddUnit { get; set; }
-    [Name("ADS data type")]
-    public string? ADSDataType { get; set; }
+    public string ModbusPermission { get; set; }
 }
 
-public class SecondInputCsvRecord
+public class SecondCsvRecord
 {
     [Name("AdsVariableName")]
-    public string? AdsVariableName { get; set; }
+    public string AdsVariableName { get; set; }
 
     [Name(" Type")]
-    public string? Type { get; set; }
+    public string Type { get; set; }
 
     [Name(" ModbusPermission")]
-    public string? ModbusPermission { get; set; }
+    public string ModbusPermission { get; set; }
 
     [Name("Description")]
-    public string? Description { get; set; }
-
-    [Name("InterpolatePoints")]
-    public bool? InterpolatePoints { get; set; }
-
-    [Name("ADS data type")]
-    public string? ADSDataType { get; set; }
+    public string Description { get; set; }
 }
 
 public class CombinedCsvRecord
 {
-    public string? AdsVariableName { get; set; }
+    public string AdsVariableName { get; set; }
     public int? ModbusAddress { get; set; }
-    public string? ModbusPermission { get; set; }
-    public string? Type { get; set; }
-    public string? Description { get; set; }
-    public bool? AddUnit { get; set; }
-    public bool? InterpolatePoints { get; set; }
-    public string? ADSDataType { get; set; }
+    public string ModbusPermission { get; set; }
+    public string Type { get; set; }
+    public string Description { get; set; }
 }
 
 class Program
@@ -93,19 +78,19 @@ class Program
         string combinedCsvFilePath = Path.Combine(baseDirectory, "smaller-combined-List.csv");
 
         // Read both CSV files
-        List<FirstIndexCsvRecord> firstCsvRecords;
-        List<SecondInputCsvRecord> secondCsvRecords;
+        List<FirstCsvRecord> firstCsvRecords;
+        List<SecondCsvRecord> secondCsvRecords;
 
         using (var reader = new StreamReader(firstCsvFilePath))
         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
         {
-            firstCsvRecords = csv.GetRecords<FirstIndexCsvRecord>().ToList();
+            firstCsvRecords = csv.GetRecords<FirstCsvRecord>().ToList();
         }
 
         using (var reader = new StreamReader(secondCsvFilePath))
         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
         {
-            secondCsvRecords = csv.GetRecords<SecondInputCsvRecord>().ToList();
+            secondCsvRecords = csv.GetRecords<SecondCsvRecord>().ToList();
         }
 
         // Attempt to merge the data
@@ -124,10 +109,8 @@ class Program
                 {
                     AdsVariableName = firstRecord.AdsVariableName,
                     ModbusAddress = firstRecord.ModbusAddress,
-                    ModbusPermission = firstRecord.ModbusPermission,
-                    AddUnit = firstRecord.AddUnit ?? false, // Default false if  null
-                    ADSDataType = firstRecord.ADSDataType
-            };
+                    ModbusPermission = firstRecord.ModbusPermission
+                };
                 combinedRecords.Add(combinedRecord);
             }
             else
@@ -135,10 +118,7 @@ class Program
                 // If exists, update the existing record
                 existingRecord.ModbusAddress = firstRecord.ModbusAddress;
                 existingRecord.ModbusPermission = firstRecord.ModbusPermission;
-                existingRecord.AddUnit = firstRecord.AddUnit ?? false; // Default false if  null
-                existingRecord.ADSDataType = firstRecord.ADSDataType;
-
-        }
+            }
         }
 
         // Add missing records from first CSV file
@@ -150,10 +130,8 @@ class Program
                 {
                     AdsVariableName = firstRecord.AdsVariableName,
                     ModbusAddress = firstRecord.ModbusAddress,
-                    ModbusPermission = firstRecord.ModbusPermission,
-                    AddUnit = firstRecord.AddUnit ?? false, // Default false if  null
-                    ADSDataType = firstRecord.ADSDataType
-};
+                    ModbusPermission = firstRecord.ModbusPermission
+                };
                 combinedRecords.Add(combinedRecord);
             }
         }
@@ -172,9 +150,7 @@ class Program
                     AdsVariableName = secondRecord.AdsVariableName,
                     Type = secondRecord.Type,
                     Description = secondRecord.Description,
-                    ModbusPermission = secondRecord.ModbusPermission,
-                    InterpolatePoints = secondRecord.InterpolatePoints ?? false, // Default false if  null
-                    ADSDataType = secondRecord.ADSDataType
+                    ModbusPermission = secondRecord.ModbusPermission
                 };
                 combinedRecords.Add(combinedRecord);
             }
@@ -184,8 +160,6 @@ class Program
                 existingRecord.Type = secondRecord.Type;
                 existingRecord.Description = secondRecord.Description;
                 existingRecord.ModbusPermission = secondRecord.ModbusPermission;
-                existingRecord.InterpolatePoints = secondRecord.InterpolatePoints ?? false; // Default false if  null
-                existingRecord.ADSDataType = secondRecord.ADSDataType;
             }
         }
 
@@ -199,9 +173,7 @@ class Program
                     AdsVariableName = secondRecord.AdsVariableName,
                     Type = secondRecord.Type,
                     Description = secondRecord.Description,
-                    ModbusPermission = secondRecord.ModbusPermission,
-                    InterpolatePoints = secondRecord.InterpolatePoints ?? false, // Default false if  null
-                    ADSDataType = secondRecord.ADSDataType
+                    ModbusPermission = secondRecord.ModbusPermission
                 };
                 combinedRecords.Add(combinedRecord);
             }
@@ -216,4 +188,4 @@ class Program
 
         Console.WriteLine("\nCombined merging of CSV files was created successfully.");
     }
-}
+}*/

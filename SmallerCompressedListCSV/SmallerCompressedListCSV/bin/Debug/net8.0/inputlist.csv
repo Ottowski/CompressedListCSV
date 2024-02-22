@@ -1,12 +1,12 @@
-AdsVariableName, Type,Description, ModbusPermission
-EM0X._EMB0X_HS1_TS2_LOW_LIMIT_SP,float,OP signal,rw
-EM0X._EMB0X_HS1_TS2_HIGH_LIMIT_SP,float,Min scale setpoint,rw
-EM0X._COOLING_FREE_MODE_V,bool,Max scale setpoint,r
-EM0X._COOLING_MODE_ACTIVE_V,bool,Min scale setpoint,r
-MODULE.CS10.P2A._M, bool,Max scale setpoint,
-MODULE.CS10.P3A._M, bool,OP signal,r
-MODULE.CS10.P4A._M, bool,OP signal,rw
-MODULE.CS10.P5A._M, bool,,rw
-MODULE.CS10.P6A._M, bool,Max scale setpoint,
-MODULE.CS10.P7A._M,,OP signal,
-MODULE.CS10.P8A._M, bool,Min scale setpoint,rw
+AdsVariableName, Type,Description, ModbusPermission,InterpolatePoints,ADS data type
+EM0X._EMB0X_HS1_TS2_LOW_LIMIT_SP,float,OP signal,rw,True,FLOAT
+EM0X._EMB0X_HS1_TS2_HIGH_LIMIT_SP,float,Min scale setpoint,rw,,INT16
+EM0X._COOLING_FREE_MODE_V,bool,Max scale setpoint,r,,BOOL
+EM0X._COOLING_MODE_ACTIVE_V,bool,Min scale setpoint,r,,FLOAT
+MODULE.CS10.P2A._M, bool,Max scale setpoint,,,FLOAT
+MODULE.CS10.P3A._M, bool,OP signal,r,True,INT16
+MODULE.CS10.P4A._M, bool,OP signal,rw,True,FLOAT
+MODULE.CS10.P5A._M, bool,,rw,,FLOAT
+MODULE.CS10.P6A._M, bool,Max scale setpoint,,,BOOL
+MODULE.CS10.P7A._M,,OP signal,,,FLOAT
+MODULE.CS10.P8A._M, bool,Min scale setpoint,rw,True,INT16
