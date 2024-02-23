@@ -109,6 +109,15 @@ class Program
                 }
             }
 
+            // Sort the combined records based on the IdIndex
+            combinedRecords = combinedRecords.OrderBy(record => record.IdIndex).ToList();
+
+            // Assign new sequential IdIndex values
+            for (int i = 0; i < combinedRecords.Count; i++)
+            {
+                combinedRecords[i].IdIndex = i + 1; // Assuming IdIndex starts from 1
+            }
+
             // Write the combined new CSV file
             using (var writer = new StreamWriter(combinedCsvFilePath))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
@@ -273,6 +282,16 @@ class Program
                     combinedRecords.Add(combinedRecord);
                 }
             }
+
+            // Sort the combined records based on the IdIndex
+            combinedRecords = combinedRecords.OrderBy(record => record.IdIndex).ToList();
+
+            // Assign new sequential IdIndex values
+            for (int i = 0; i < combinedRecords.Count; i++)
+            {
+                combinedRecords[i].IdIndex = i + 1; // Assuming IdIndex starts from 1
+            }
+
 
             // Write the combined new CSV file
             using (var writer = new StreamWriter(combinedCsvFilePath))
