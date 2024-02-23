@@ -45,6 +45,7 @@ class Program
             }
         }
     }
+
     static List<CombinedCsvRecord> ReadAndMergeCsvFiles(string firstCsvFilePath, string secondCsvFilePath)
     {
         List<FirstIndexCsvRecord> firstCsvRecords;
@@ -67,6 +68,9 @@ class Program
         // Merge records from both CSV files
         var combinedRecords = new List<CombinedCsvRecord>();
 
+        // Find the maximum IdIndex from records
+        int maxIdIndex = (int)(combinedRecords.Max(record => record.IdIndex) + 1);
+
         // Merge records from the first CSV file
         foreach (var firstRecord in firstCsvRecords)
         {
@@ -85,9 +89,10 @@ class Program
         // Merge records from the second CSV file
         foreach (var secondRecord in secondCsvRecords)
         {
-            var existingRecord = combinedRecords.FirstOrDefault(x => x.IdIndex == secondRecord.IdIndex && x.AdsVariableName == secondRecord.AdsVariableName);
+            var existingRecord = combinedRecords.FirstOrDefault(x => x.AdsVariableName == secondRecord.AdsVariableName);
             if (existingRecord != null)
             {
+                // If the record already exists, update it
                 existingRecord.Type = secondRecord.Type;
                 existingRecord.Description = secondRecord.Description;
                 existingRecord.ModbusPermission = secondRecord.ModbusPermission;
@@ -96,9 +101,10 @@ class Program
             }
             else
             {
+                // If the record doesn't exist, create a new one
                 var combinedRecord = new CombinedCsvRecord
                 {
-                    IdIndex = secondRecord.IdIndex,
+                    IdIndex = maxIdIndex++, // Assigns a new IdIndex and adds to maxIdIndex
                     AdsVariableName = secondRecord.AdsVariableName,
                     Type = secondRecord.Type,
                     Description = secondRecord.Description,
@@ -112,7 +118,6 @@ class Program
 
         return combinedRecords;
     }
-
 
     static void MergeWholeCsvFiles()
     {
