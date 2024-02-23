@@ -45,6 +45,109 @@ class Program
             }
         }
     }
+    static List<CombinedCsvRecord> ReadAndMergeCsvFiles(string firstCsvFilePath, string secondCsvFilePath)
+    {
+        List<FirstIndexCsvRecord> firstCsvRecords;
+        List<SecondInputCsvRecord> secondCsvRecords;
+
+        // Read first CSV file
+        using (var reader = new StreamReader(firstCsvFilePath))
+        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+        {
+            firstCsvRecords = csv.GetRecords<FirstIndexCsvRecord>().ToList();
+        }
+
+        // Read second CSV file
+        using (var reader = new StreamReader(secondCsvFilePath))
+        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+        {
+            secondCsvRecords = csv.GetRecords<SecondInputCsvRecord>().ToList();
+        }
+
+        // Merge records from both CSV files
+        var combinedRecords = new List<CombinedCsvRecord>();
+
+        // Merge records from the first CSV file
+        foreach (var firstRecord in firstCsvRecords)
+        {
+            var combinedRecord = new CombinedCsvRecord
+            {
+                IdIndex = firstRecord.IdIndex,
+                AdsVariableName = firstRecord.AdsVariableName,
+                ModbusAddress = firstRecord.ModbusAddress,
+                ModbusPermission = firstRecord.ModbusPermission,
+                AddUnit = firstRecord.AddUnit ?? false,
+                ADSDataType = firstRecord.ADSDataType
+            };
+            combinedRecords.Add(combinedRecord);
+        }
+
+        // Merge records from the second CSV file
+        foreach (var secondRecord in secondCsvRecords)
+        {
+            var existingRecord = combinedRecords.FirstOrDefault(x => x.IdIndex == secondRecord.IdIndex && x.AdsVariableName == secondRecord.AdsVariableName);
+            if (existingRecord != null)
+            {
+                existingRecord.Type = secondRecord.Type;
+                existingRecord.Description = secondRecord.Description;
+                existingRecord.ModbusPermission = secondRecord.ModbusPermission;
+                existingRecord.InterpolatePoints = secondRecord.InterpolatePoints ?? false;
+                existingRecord.ADSDataType = secondRecord.ADSDataType;
+            }
+            else
+            {
+                var combinedRecord = new CombinedCsvRecord
+                {
+                    IdIndex = secondRecord.IdIndex,
+                    AdsVariableName = secondRecord.AdsVariableName,
+                    Type = secondRecord.Type,
+                    Description = secondRecord.Description,
+                    ModbusPermission = secondRecord.ModbusPermission,
+                    InterpolatePoints = secondRecord.InterpolatePoints ?? false,
+                    ADSDataType = secondRecord.ADSDataType
+                };
+                combinedRecords.Add(combinedRecord);
+            }
+        }
+
+        return combinedRecords;
+    }
+
+
+    static void MergeWholeCsvFiles()
+    {
+        try
+        {
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string firstCsvFilePath = Path.Combine(baseDirectory, "indexlist.csv");
+            string secondCsvFilePath = Path.Combine(baseDirectory, "inputlist.csv");
+            string combinedCsvFilePath = Path.Combine(baseDirectory, "combinedlist.csv");
+
+            List<CombinedCsvRecord> combinedRecords = ReadAndMergeCsvFiles(firstCsvFilePath, secondCsvFilePath);
+
+            // Sort the combined records based on the IdIndex
+            combinedRecords = combinedRecords.OrderBy(record => record.IdIndex).ToList();
+
+            // Assign new sequential IdIndex values
+            for (int i = 0; i < combinedRecords.Count; i++)
+            {
+                combinedRecords[i].IdIndex = i + 1; // Assuming IdIndex starts from 1
+            }
+
+            // Write the combined new CSV file
+            using (var writer = new StreamWriter(combinedCsvFilePath))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(combinedRecords);
+            }
+
+            Console.WriteLine("\nCombined merging of CSV files was created successfully.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+        }
+    }
 
     static void MergeSmallerCsvFile()
     {
@@ -55,59 +158,7 @@ class Program
             string secondCsvFilePath = Path.Combine(baseDirectory, "inputlist.csv");
             string combinedCsvFilePath = Path.Combine(baseDirectory, "even-smaller-combined-List.csv");
 
-            List<FirstIndexCsvRecord> firstCsvRecords;
-            List<SecondInputCsvRecord> secondCsvRecords;
-
-            // Read both CSV files
-
-            using (var reader = new StreamReader(firstCsvFilePath))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                firstCsvRecords = csv.GetRecords<FirstIndexCsvRecord>().ToList();
-            }
-
-            using (var reader = new StreamReader(secondCsvFilePath))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                secondCsvRecords = csv.GetRecords<SecondInputCsvRecord>().ToList();
-            }
-
-            // Merge records from first CSV file
-            var combinedRecords = new List<CombinedCsvRecord>();
-
-            foreach (var firstRecord in firstCsvRecords)
-            {
-                var combinedRecord = new CombinedCsvRecord
-                {
-                    IdIndex = firstRecord.IdIndex,
-                    AdsVariableName = firstRecord.AdsVariableName,
-                    ModbusAddress = firstRecord.ModbusAddress,
-                    ADSDataType = firstRecord.ADSDataType
-                };
-                combinedRecords.Add(combinedRecord);
-            }
-
-            // Merge records from second CSV file
-            foreach (var secondRecord in secondCsvRecords)
-            {
-                var existingRecord = combinedRecords.FirstOrDefault(x => x.IdIndex == secondRecord.IdIndex && x.AdsVariableName == secondRecord.AdsVariableName);
-                if (existingRecord != null)
-                {
-                    existingRecord.Type = secondRecord.Type;
-                    existingRecord.ADSDataType = secondRecord.ADSDataType;
-                }
-                else
-                {
-                    var combinedRecord = new CombinedCsvRecord
-                    {
-                        IdIndex = secondRecord.IdIndex,
-                        AdsVariableName = secondRecord.AdsVariableName,
-                        Type = secondRecord.Type,
-                        ADSDataType = secondRecord.ADSDataType,
-                    };
-                    combinedRecords.Add(combinedRecord);
-                }
-            }
+            List<CombinedCsvRecord> combinedRecords = ReadAndMergeCsvFiles(firstCsvFilePath, secondCsvFilePath);
 
             // Sort the combined records based on the IdIndex
             combinedRecords = combinedRecords.OrderBy(record => record.IdIndex).ToList();
@@ -134,177 +185,5 @@ class Program
             Console.WriteLine($"An error occurred: {ex.Message}");
         }
     }
-    // ClassMap to configure CsvHelper to ignore unwanted properties
-    public class CombinedCsvRecordMap : ClassMap<CombinedCsvRecord>
-    {
-        public CombinedCsvRecordMap()
-        {
-            Map(m => m.IdIndex);
-            Map(m => m.AdsVariableName);
-            Map(m => m.ModbusAddress);
-            Map(m => m.Type);
-            Map(m => m.ADSDataType);
-        }
-    }
 
-
-
-
-
-
-
-
-
-    static void MergeWholeCsvFiles()
-    {
-        try
-        {
-            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string firstCsvFilePath = Path.Combine(baseDirectory, "indexlist.csv");
-            string secondCsvFilePath = Path.Combine(baseDirectory, "inputlist.csv");
-            string combinedCsvFilePath = Path.Combine(baseDirectory, "combinedlist.csv");
-
-            // Read both CSV files
-            List<FirstIndexCsvRecord> firstCsvRecords;
-            List<SecondInputCsvRecord> secondCsvRecords;
-
-            using (var reader = new StreamReader(firstCsvFilePath))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                firstCsvRecords = csv.GetRecords<FirstIndexCsvRecord>().ToList();
-            }
-
-            using (var reader = new StreamReader(secondCsvFilePath))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                secondCsvRecords = csv.GetRecords<SecondInputCsvRecord>().ToList();
-            }
-
-            // Attempt to merge the data
-            var combinedRecords = new List<CombinedCsvRecord>();
-
-            // Merge records from first CSV file
-            foreach (var firstRecord in firstCsvRecords)
-            {
-                // Check if the record already exists 
-                var existingRecord = combinedRecords.FirstOrDefault(x => x.IdIndex == firstRecord.IdIndex && x.AdsVariableName == firstRecord.AdsVariableName);
-
-                if (existingRecord == null)
-                {
-                    // If not, create new
-                    var combinedRecord = new CombinedCsvRecord
-                    {
-                        IdIndex = firstRecord.IdIndex,
-                        AdsVariableName = firstRecord.AdsVariableName,
-                        ModbusAddress = firstRecord.ModbusAddress,
-                        ModbusPermission = firstRecord.ModbusPermission,
-                        AddUnit = firstRecord.AddUnit ?? false, // Default false if  null
-                        ADSDataType = firstRecord.ADSDataType
-                    };
-                    combinedRecords.Add(combinedRecord);
-                }
-                else
-                {
-                    // If exists, update the existing record
-                    existingRecord.ModbusAddress = firstRecord.ModbusAddress;
-                    existingRecord.ModbusPermission = firstRecord.ModbusPermission;
-                    existingRecord.AddUnit = firstRecord.AddUnit ?? false; // Default false if  null
-                    existingRecord.ADSDataType = firstRecord.ADSDataType;
-
-                }
-            }
-
-            // Add missing records from first CSV file
-            foreach (var firstRecord in firstCsvRecords)
-            {
-                if (!combinedRecords.Any(x => x.AdsVariableName == firstRecord.AdsVariableName))
-                {
-                    var combinedRecord = new CombinedCsvRecord
-                    {
-                        IdIndex = firstRecord.IdIndex,
-                        AdsVariableName = firstRecord.AdsVariableName,
-                        ModbusAddress = firstRecord.ModbusAddress,
-                        ModbusPermission = firstRecord.ModbusPermission,
-                        AddUnit = firstRecord.AddUnit ?? false, // Default false if  null
-                        ADSDataType = firstRecord.ADSDataType
-                    };
-                    combinedRecords.Add(combinedRecord);
-                }
-            }
-
-            // Merge records from second CSV file
-            foreach (var secondRecord in secondCsvRecords)
-            {
-                // Check if the record already exists 
-                var existingRecord = combinedRecords.FirstOrDefault(x => x.IdIndex == secondRecord.IdIndex && x.AdsVariableName == secondRecord.AdsVariableName);
-
-                if (existingRecord == null)
-                {
-                    // If not, create new
-                    var combinedRecord = new CombinedCsvRecord
-                    {
-                        IdIndex = secondRecord.IdIndex,
-                        AdsVariableName = secondRecord.AdsVariableName,
-                        Type = secondRecord.Type,
-                        Description = secondRecord.Description,
-                        ModbusPermission = secondRecord.ModbusPermission,
-                        InterpolatePoints = secondRecord.InterpolatePoints ?? false, // Default false if  null
-                        ADSDataType = secondRecord.ADSDataType
-                    };
-                    combinedRecords.Add(combinedRecord);
-                }
-                else
-                {
-                    // If exists, update the existing record
-                    existingRecord.Type = secondRecord.Type;
-                    existingRecord.Description = secondRecord.Description;
-                    existingRecord.ModbusPermission = secondRecord.ModbusPermission;
-                    existingRecord.InterpolatePoints = secondRecord.InterpolatePoints ?? false; // Default false if  null
-                    existingRecord.ADSDataType = secondRecord.ADSDataType;
-                }
-            }
-
-            // Add missing records from second CSV file
-            foreach (var secondRecord in secondCsvRecords)
-            {
-                if (!combinedRecords.Any(x => x.AdsVariableName == secondRecord.AdsVariableName))
-                {
-                    var combinedRecord = new CombinedCsvRecord
-                    {
-                        IdIndex = secondRecord.IdIndex,
-                        AdsVariableName = secondRecord.AdsVariableName,
-                        Type = secondRecord.Type,
-                        Description = secondRecord.Description,
-                        ModbusPermission = secondRecord.ModbusPermission,
-                        InterpolatePoints = secondRecord.InterpolatePoints ?? false, // Default false if  null
-                        ADSDataType = secondRecord.ADSDataType
-                    };
-                    combinedRecords.Add(combinedRecord);
-                }
-            }
-
-            // Sort the combined records based on the IdIndex
-            combinedRecords = combinedRecords.OrderBy(record => record.IdIndex).ToList();
-
-            // Assign new sequential IdIndex values
-            for (int i = 0; i < combinedRecords.Count; i++)
-            {
-                combinedRecords[i].IdIndex = i + 1; // Assuming IdIndex starts from 1
-            }
-
-
-            // Write the combined new CSV file
-            using (var writer = new StreamWriter(combinedCsvFilePath))
-            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
-            {
-                csv.WriteRecords(combinedRecords);
-            }
-
-            Console.WriteLine("\nCombined merging of CSV files was created successfully.");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"An error occurred: {ex.Message}");
-        }
-    }
 }
