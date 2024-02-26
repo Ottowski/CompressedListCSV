@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 //namespace SmallerCompressedListCSV;
 
 public class CombinedCsvRecord
 {
-    //remember it's not index, but regular order placement of this that determine the list order outcome.
+    //remember it's not index, but the regular row order (top to down) placement of this that determine the list order outcome (e.g. in Excel).
     [Index(0)]
     public int? IdIndex { get; set; }
     [Index(1)]
@@ -28,4 +29,8 @@ public class CombinedCsvRecord
     public bool? InterpolatePoints { get; set; }
     [Index(8)]
     public string? ADSDataType { get; set; }
+    [Index(9)]
+    public int? RequestInterval { get; set; }
+    [Index(10)]
+    public string? OutputDataType { get; set; }
 }

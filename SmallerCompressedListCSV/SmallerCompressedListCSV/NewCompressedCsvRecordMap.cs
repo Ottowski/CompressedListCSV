@@ -17,5 +17,6 @@ public class CombinedCsvRecordMap : ClassMap<CombinedCsvRecord>
         Map(m => m.ModbusAddress);
         Map(m => m.Type);
         Map(m => m.ADSDataType);
+        Map(m => m.RequestInterval);
     }
 }
