@@ -11,7 +11,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 public class FirstIndexCsvRecord
 {
     [Name("IdIndex")]
-    public int? IdIndex { get; set; }
+    public string? IdIndex { get; set; }
     [Name(" AdsVariableName")]
     public string? AdsVariableName { get; set; }
 
@@ -38,7 +38,7 @@ public class FirstIndexCsvRecord
 public class SecondInputCsvRecord
 {
     [Name("IdIndex")]
-    public int? IdIndex { get; set; }
+    public string? IdIndex { get; set; }
     [Name(" AdsVariableName")]
     public string? AdsVariableName { get; set; }
 

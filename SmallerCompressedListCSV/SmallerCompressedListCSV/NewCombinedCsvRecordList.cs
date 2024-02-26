@@ -12,7 +12,7 @@ public class CombinedCsvRecord
 {
     //remember it's not index, but the regular row order (top to down) placement of this that determine the list order outcome (e.g. in Excel).
     [Index(0)]
-    public int? IdIndex { get; set; }
+    public string? IdIndex { get; set; }
     [Index(1)]
     public string? AdsVariableName { get; set; }
     [Index(2)]

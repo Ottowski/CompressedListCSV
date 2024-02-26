@@ -7,20 +7,20 @@
       "RelativeMoniker": "D:0:0:{CB08088B-9E28-4056-8588-0889579D6B18}|SmallerCompressedListCSV\\SmallerCompressedListCSV.csproj|solutionrelative:smallercompressedlistcsv\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB08088B-9E28-4056-8588-0889579D6B18}|SmallerCompressedListCSV\\SmallerCompressedListCSV.csproj|C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\smallercompressedlistcsv\\newcompressedcsvrecordmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB08088B-9E28-4056-8588-0889579D6B18}|SmallerCompressedListCSV\\SmallerCompressedListCSV.csproj|solutionrelative:smallercompressedlistcsv\\newcompressedcsvrecordmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB08088B-9E28-4056-8588-0889579D6B18}|SmallerCompressedListCSV\\SmallerCompressedListCSV.csproj|C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\smallercompressedlistcsv\\smallercompressedcsvmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB08088B-9E28-4056-8588-0889579D6B18}|SmallerCompressedListCSV\\SmallerCompressedListCSV.csproj|solutionrelative:smallercompressedlistcsv\\smallercompressedcsvmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CB08088B-9E28-4056-8588-0889579D6B18}|SmallerCompressedListCSV\\SmallerCompressedListCSV.csproj|C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\smallercompressedlistcsv\\newcombinedcsvrecordlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CB08088B-9E28-4056-8588-0889579D6B18}|SmallerCompressedListCSV\\SmallerCompressedListCSV.csproj|solutionrelative:smallercompressedlistcsv\\newcombinedcsvrecordlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CB08088B-9E28-4056-8588-0889579D6B18}|SmallerCompressedListCSV\\SmallerCompressedListCSV.csproj|C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\smallercompressedlistcsv\\oldcsvfilerecordconstructor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CB08088B-9E28-4056-8588-0889579D6B18}|SmallerCompressedListCSV\\SmallerCompressedListCSV.csproj|solutionrelative:smallercompressedlistcsv\\oldcsvfilerecordconstructor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB08088B-9E28-4056-8588-0889579D6B18}|SmallerCompressedListCSV\\SmallerCompressedListCSV.csproj|C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\smallercompressedlistcsv\\smallercompressedcsvmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB08088B-9E28-4056-8588-0889579D6B18}|SmallerCompressedListCSV\\SmallerCompressedListCSV.csproj|solutionrelative:smallercompressedlistcsv\\smallercompressedcsvmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB08088B-9E28-4056-8588-0889579D6B18}|SmallerCompressedListCSV\\SmallerCompressedListCSV.csproj|C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\smallercompressedlistcsv\\newcompressedcsvrecordmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB08088B-9E28-4056-8588-0889579D6B18}|SmallerCompressedListCSV\\SmallerCompressedListCSV.csproj|solutionrelative:smallercompressedlistcsv\\newcompressedcsvrecordmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -76,58 +76,62 @@
               "RelativeDocumentMoniker": "SmallerCompressedListCSV\\Program.cs",
               "ToolTip": "C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\Program.cs",
               "RelativeToolTip": "SmallerCompressedListCSV\\Program.cs",
-              "ViewState": "AQIAALcAAAAAAAAAAAAAALAAAAA0AAAA",
+              "ViewState": "AQIAAMYAAAAAAAAAAAAqwNsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-21T14:52:12.206Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "NewCompressedCsvRecordMap.cs",
               "DocumentMoniker": "C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\NewCompressedCsvRecordMap.cs",
               "RelativeDocumentMoniker": "SmallerCompressedListCSV\\NewCompressedCsvRecordMap.cs",
               "ToolTip": "C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\NewCompressedCsvRecordMap.cs",
               "RelativeToolTip": "SmallerCompressedListCSV\\NewCompressedCsvRecordMap.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-23T09:13:36.29Z"
+              "WhenOpened": "2024-02-23T09:13:36.29Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "NewCombinedCsvRecordList.cs",
               "DocumentMoniker": "C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\NewCombinedCsvRecordList.cs",
               "RelativeDocumentMoniker": "SmallerCompressedListCSV\\NewCombinedCsvRecordList.cs",
               "ToolTip": "C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\NewCombinedCsvRecordList.cs",
               "RelativeToolTip": "SmallerCompressedListCSV\\NewCombinedCsvRecordList.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAOAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-22T13:08:43.226Z"
+              "WhenOpened": "2024-02-22T13:08:43.226Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "SmallerCompressedCsvMap.cs",
               "DocumentMoniker": "C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\SmallerCompressedCsvMap.cs",
               "RelativeDocumentMoniker": "SmallerCompressedListCSV\\SmallerCompressedCsvMap.cs",
               "ToolTip": "C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\SmallerCompressedCsvMap.cs",
               "RelativeToolTip": "SmallerCompressedListCSV\\SmallerCompressedCsvMap.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAZAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-23T12:38:40.01Z"
+              "WhenOpened": "2024-02-23T12:38:40.01Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "OldCsvFileRecordConstructor.cs",
               "DocumentMoniker": "C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\OldCsvFileRecordConstructor.cs",
               "RelativeDocumentMoniker": "SmallerCompressedListCSV\\OldCsvFileRecordConstructor.cs",
               "ToolTip": "C:\\Users\\ottoa\\OneDrive\\Skrivbord\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\SmallerCompressedListCSV\\OldCsvFileRecordConstructor.cs",
               "RelativeToolTip": "SmallerCompressedListCSV\\OldCsvFileRecordConstructor.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAAAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAADwvz0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-22T12:38:49.561Z"
+              "WhenOpened": "2024-02-22T12:38:49.561Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",

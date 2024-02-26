@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmallerCompressedListCSV")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+273605ca28c173f92e1cebccbaa94e659b05a1a7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5bb9f4b110cdf56bf98b4562aaf1001bbf12acd4")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmallerCompressedListCSV")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmallerCompressedListCSV")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -78,7 +78,7 @@ class Program
         int maxIdIndex = 0; // set to start at 0
         if (combinedRecords.Any())
         {
-            maxIdIndex = combinedRecords.Max(record => record.IdIndex ?? 0); // Use 0 if null
+            maxIdIndex = combinedRecords.Max(record => int.Parse(record.IdIndex ?? "0")); // Use 0 if null and also parse the string into a integer
         }
 
         // Merge records from the first CSV file
@@ -117,7 +117,7 @@ class Program
                 // If the record doesn't exist, create a new one
                 var combinedRecord = new CombinedCsvRecord
                 {
-                    IdIndex = ++maxIdIndex, // Increased and/or added to maxIdIndex and use the new value of IdIndex
+                    IdIndex = (++maxIdIndex).ToString(), // Increased and/or added to maxIdIndex and use the new value of IdIndex
                     AdsVariableName = secondRecord.AdsVariableName,
                     Type = secondRecord.Type,
                     Description = secondRecord.Description,
@@ -214,8 +214,9 @@ class Program
             // Assign new sequential IdIndex values
             for (int i = 0; i < combinedRecords.Count; i++)
             {
-                combinedRecords[i].IdIndex = i + 1; // Assuming IdIndex starts from 1
+                combinedRecords[i].IdIndex = (i + 1).ToString(); // Starting from 1 without leading zeros
             }
+
 
             // Write the combined new CSV file
             using (var writer = new StreamWriter(combinedCsvFilePath))
@@ -250,8 +251,9 @@ class Program
             // Assign new sequential IdIndex values
             for (int i = 0; i < combinedRecords.Count; i++)
             {
-                combinedRecords[i].IdIndex = i + 1; // Assuming IdIndex starts from 1
+                combinedRecords[i].IdIndex = (i + 1).ToString(); // Starting from 1 without leading zeros
             }
+
 
             // Write the combined new CSV file
             using (var writer = new StreamWriter(combinedCsvFilePath))
